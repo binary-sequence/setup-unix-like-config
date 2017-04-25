@@ -4,7 +4,7 @@
 #   Installs the custom configuration.
 #
 # TODO
-#   .bashrc and .profile
+#   .profile
 #
 set -e
 
@@ -25,7 +25,8 @@ ln -s -fT $root_path/$home_path/.config/sublime-text-2/Packages/User /home/user/
 ln -s -fT $root_path/$home_path/.config/terminator /home/user/.config/terminator
 ln -s -fT $root_path/$home_path/.grc /home/user/.grc
 ln -s -fT $root_path/$home_path/.bash_aliases /home/user/.alias
-# ln -s -fT $root_path/$home_path/.bashrc /home/user/.bashrc
+ln -s -fT $root_path/$home_path/.bashrc.color_prompt /home/user/.bashrc.color_prompt
+echo "source /home/user/.bashrc.color_prompt" >> /home/user/.bashrc
 ln -s -fT $root_path/$home_path/.gitconfig /home/user/.gitconfig
 # ln -s -fT $root_path/$home_path/.profile /home/user/.profile
 ln -s -fT $root_path/$home_path/.vimrc /home/user/.vimrc
@@ -40,3 +41,5 @@ source /home/user/.alias
 
 sed -i -e "s/xyz@mail.de/$git_email/" /home/user/.gitconfig
 sed -i -e "s/xyz/$git_username/" /home/user/.gitconfig
+
+set +ex
