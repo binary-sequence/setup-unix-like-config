@@ -6,40 +6,42 @@
 # TODO
 #   .profile
 #
-set -e
 
+
+system_username=`whoami`
 read -p "git username: " git_username
 read -p "git email: " git_email
 
-root_path='/home/user/github/unix-like-config'
-home_path='root/home/username'
-bin_path='root/usr/local/bin'
-
 set -x
-git clone https://github.com/binary-sequence/unix-like-config.git $root_path
-ln -s -fT $root_path/$home_path/.colortail /home/user/.colortail
-mkdir /home/user/.config/Code
-ln -s -fT $root_path/$home_path/.config/Code/User /home/user/.config/Code/User
-mkdir -p /home/user/.config/sublime-text-2/Packages
-ln -s -fT $root_path/$home_path/.config/sublime-text-2/Packages/User /home/user/.config/sublime-text-2/Packages/User
-ln -s -fT $root_path/$home_path/.config/terminator /home/user/.config/terminator
-ln -s -fT $root_path/$home_path/.grc /home/user/.grc
-ln -s -fT $root_path/$home_path/.bash_aliases /home/user/.alias
-ln -s -fT $root_path/$home_path/.bashrc.color_prompt /home/user/.bashrc.color_prompt
-echo "source /home/user/.bashrc.color_prompt" >> /home/user/.bashrc
-ln -s -fT $root_path/$home_path/.gitconfig /home/user/.gitconfig
-# ln -s -fT $root_path/$home_path/.profile /home/user/.profile
-ln -s -fT $root_path/$home_path/.vimrc /home/user/.vimrc
-ln -s -fT $root_path/$bin_path/openQA /usr/local/bin/openQA
-ln -s -fT $root_path/$bin_path/diff-highlight /usr/local/bin/diff-highlight
-ln -s -fT $root_path/$bin_path/git-sync-fork.sh /usr/local/bin/git-sync-fork.sh
-ln -s -fT $root_path/$bin_path/notify-send-fortune.sh /usr/local/bin/notify-send-fortune.sh
-ln -s -fT $root_path/$bin_path/resolve_filenames_broken_encoding.sh /usr/local/bin/resolve_filenames_broken_encoding.sh
-ln -s -fT $root_path/$bin_path/showBatteryStatus.sh /usr/local/bin/showBatteryStatus.sh
+target_home_path="/home/$system_username"
+target_root_path="/home/$target_home_path/github/unix-like-config"
+source_home_path='root/home/username'
+source_bin_path='root/usr/local/bin'
 
-source /home/user/.alias
+git clone https://github.com/binary-sequence/unix-like-config.git $target_root_path
+ln -s -fT $target_root_path/$source_home_path/.colortail $target_home_path/.colortail
+mkdir $target_home_path/.config/Code
+ln -s -fT $target_root_path/$source_home_path/.config/Code/User $target_home_path/.config/Code/User
+mkdir -p $target_home_path/.config/sublime-text-2/Packages
+ln -s -fT $target_root_path/$source_home_path/.config/sublime-text-2/Packages/User $target_home_path/.config/sublime-text-2/Packages/User
+ln -s -fT $target_root_path/$source_home_path/.config/terminator $target_home_path/.config/terminator
+ln -s -fT $target_root_path/$source_home_path/.grc $target_home_path/.grc
+ln -s -fT $target_root_path/$source_home_path/.bash_aliases $target_home_path/.alias
+ln -s -fT $target_root_path/$source_home_path/.bashrc.color_prompt $target_home_path/.bashrc.color_prompt
+echo "source $target_home_path/.bashrc.color_prompt" >> $target_home_path/.bashrc
+ln -s -fT $target_root_path/$source_home_path/.gitconfig $target_home_path/.gitconfig
+# ln -s -fT $target_root_path/$source_home_path/.profile $target_home_path/.profile
+ln -s -fT $target_root_path/$source_home_path/.vimrc $target_home_path/.vimrc
+ln -s -fT $target_root_path/$source_bin_path/openQA /usr/local/bin/openQA
+ln -s -fT $target_root_path/$source_bin_path/diff-highlight /usr/local/bin/diff-highlight
+ln -s -fT $target_root_path/$source_bin_path/git-sync-fork.sh /usr/local/bin/git-sync-fork.sh
+ln -s -fT $target_root_path/$source_bin_path/notify-send-fortune.sh /usr/local/bin/notify-send-fortune.sh
+ln -s -fT $target_root_path/$source_bin_path/resolve_filenames_broken_encoding.sh /usr/local/bin/resolve_filenames_broken_encoding.sh
+ln -s -fT $target_root_path/$source_bin_path/showBatteryStatus.sh /usr/local/bin/showBatteryStatus.sh
 
-sed -i -e "s/xyz@mail.de/$git_email/" /home/user/.gitconfig
-sed -i -e "s/xyz/$git_username/" /home/user/.gitconfig
+sed -i -e "s/xyz@mail.de/$git_email/" $target_home_path/.gitconfig
+sed -i -e "s/xyz/$git_username/" $target_home_path/.gitconfig
 
-set +ex
+set +x
+
+echo "You should now execute 'source ~/.alias'"
