@@ -14,11 +14,13 @@ read -p "git email: " git_email
 
 set -x
 target_home_path="/home/$system_username"
-target_root_path="/home/$target_home_path/github/unix-like-config"
+target_root_path="$target_home_path/github/unix-like-config"
 source_home_path='root/home/username'
 source_bin_path='root/usr/local/bin'
 
-git clone https://github.com/binary-sequence/unix-like-config.git $target_root_path
+if [ ! -d "$target_root_path" ]; then
+  git clone https://github.com/binary-sequence/unix-like-config.git $target_root_path
+fi
 ln -s -fT $target_root_path/$source_home_path/.colortail $target_home_path/.colortail
 mkdir $target_home_path/.config/Code
 ln -s -fT $target_root_path/$source_home_path/.config/Code/User $target_home_path/.config/Code/User
