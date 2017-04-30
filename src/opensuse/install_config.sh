@@ -33,6 +33,9 @@ ln -s -fT $target_root_path/$source_home_path/.bashrc.color_prompt $target_home_
 echo "source $target_home_path/.bashrc.color_prompt" >> $target_home_path/.bashrc
 ln -s -fT $target_root_path/$source_home_path/.gitconfig $target_home_path/.gitconfig
 # ln -s -fT $target_root_path/$source_home_path/.profile $target_home_path/.profile
+mkdir $target_home_path/.shutter
+ln -s -fT $target_root_path/$source_home_path/.shutter/drawingtool.xml $target_home_path/.shutter/drawingtool.xml
+ln -s -fT $target_root_path/$source_home_path/.shutter/settings.xml $target_home_path/.shutter/settings.xml
 ln -s -fT $target_root_path/$source_home_path/.vimrc $target_home_path/.vimrc
 ln -s -fT $target_root_path/$source_bin_path/openQA /usr/local/bin/openQA
 ln -s -fT $target_root_path/$source_bin_path/diff-highlight /usr/local/bin/diff-highlight
