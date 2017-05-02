@@ -21,6 +21,7 @@ source_bin_path='root/usr/local/bin'
 if [ ! -d "$target_root_path" ]; then
   git clone https://github.com/binary-sequence/unix-like-config.git $target_root_path
 fi
+git checkout -b v0.1 tags/v0.1
 ln -s -fT $target_root_path/$source_home_path/.colortail $target_home_path/.colortail
 mkdir $target_home_path/.config/Code
 ln -s -fT $target_root_path/$source_home_path/.config/Code/User $target_home_path/.config/Code/User
