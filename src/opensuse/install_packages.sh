@@ -17,10 +17,14 @@ zypper --no-gpg-checks --gpg-auto-import-keys ref
 
 # textmode
 zypper in -y cowsay
+zypper in -y docker
 zypper in -y fortune
 zypper in -y git
 zypper in -y grc
 zypper in -y mosh
+zypper in -y php
+zypper in -y python
+zypper in -y python-pip && pip install --upgrade pip
 zypper in -y qemu
 zypper in -y ssh
 zypper in -y sshfs
