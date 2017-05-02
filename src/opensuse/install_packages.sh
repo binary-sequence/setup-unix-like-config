@@ -35,9 +35,9 @@ zypper in -y znc
 
 
 # GUI
-zypper in -y shutter
-zypper in -y terminator
 zypper in -y code
 zypper in -y google-chrome-stable
+zypper in -y shutter
+zypper in -y terminator
 
 set +xe
