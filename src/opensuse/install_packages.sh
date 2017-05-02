@@ -26,7 +26,7 @@ zypper in -y php
 zypper in -y python
 zypper in -y python-pip && pip install --upgrade pip
 zypper in -y qemu
-zypper in -y ssh
+zypper in -y openssh
 zypper in -y sshfs
 zypper in -y tmux
 zypper in -y tree
